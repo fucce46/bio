@@ -1,27 +1,28 @@
 :root {
-    /* Web3 Colors (сохранены для остальной стилизации) */
+    /* Web3 Colors */
     --web3-dark-bg: #0A0B1A;
-    --web3-card-bg: rgba(18, 20, 40, 0.7); /* Darker, slightly transparent */
-    --web3-accent-green: #00FFC0; /* Neon Green (now only for accents) */
-    --web3-accent-blue: #00BFFF; /* Deep Sky Blue */
+    --web3-card-bg: rgba(18, 20, 40, 0.7);
+    --web3-accent-green: #00FFC0;
+    --web3-accent-blue: #00BFFF;
     --web3-text-light: #E0E0E0;
     --web3-text-medium: #A0A0B0;
     --web3-text-dark: #707080;
-    --web3-border-color: rgba(0, 255, 192, 0.2); /* Faint neon border */
-    --web3-shadow-light: 0 0 15px rgba(0, 255, 192, 0.3);
-    --web3-shadow-dark: 0 0 25px rgba(0, 255, 192, 0.5);
-    --telegram-color: #0088cc; /* Keep Telegram blue */
+    --web3-border-color: rgba(0, 255, 192, 0.2);
+    --telegram-color: #0088cc;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
 body {
-    font-family: 'Oxanium', monospace; /* Web3 Font */
+    font-family: 'Oxanium', monospace;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    color: var(--web3-text-light); /* Default text color */
+    color: var(--web3-text-light);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,17 +30,17 @@ body {
     min-height: 100vh;
     transition: background-color 0.4s ease, color 0.4s ease;
     /* Обновленные фоновые градиенты и изображение */
-    background-image: 
-        radial-gradient(ellipse at 50% 120%, rgba(100, 50, 200, 0.3) 0%, transparent 70%), /* Пурпурный градиент */
-        radial-gradient(ellipse at 80% 110%, rgba(50, 150, 250, 0.2) 0%, transparent 70%), /* Синий градиент */
-        radial-gradient(ellipse at 20% 105%, rgba(250, 50, 150, 0.2) 0%, transparent 70%),  /* Розовый градиент */
-        url('bio.jpg'); /* Ваше фоновое изображение */
+    background-image:
+        radial-gradient(ellipse at 50% 150%, rgba(120, 70, 220, 0.7) 0%, transparent 60%), /* Яркий пурпурный, ниже, шире */
+        radial-gradient(ellipse at 80% 140%, rgba(70, 170, 255, 0.6) 0%, transparent 60%), /* Яркий синий, ниже, шире */
+        radial-gradient(ellipse at 20% 145%, rgba(255, 70, 170, 0.6) 0%, transparent 60%),  /* Яркий розовый, ниже, шире */
+        url('bio.jpg');
     background-repeat: no-repeat;
     background-position: center bottom, center bottom, center bottom, center center; /* Позиционируем градиенты снизу */
-    background-size: 80% 50%, 70% 45%, 90% 55%, cover; /* Размеры градиентов */
+    background-size: 120% 70%, 110% 65%, 130% 75%, cover; /* Размеры градиентов увеличены */
     position: relative;
-    background-color: var(--web3-dark-bg); /* Fallback for no image or dark base */
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    background-color: var(--web3-dark-bg);
+    overflow-x: hidden; /* Предотвращаем горизонтальную прокрутку */
 }
 
 body::before {
@@ -49,9 +50,9 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Slightly more opaque dark overlay */
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 0;
-    animation: backgroundPulse 10s infinite alternate; /* Subtle background animation */
+    animation: backgroundPulse 10s infinite alternate;
 }
 
 @keyframes backgroundPulse {
@@ -59,28 +60,28 @@ body::before {
     100% { background-color: rgba(0, 0, 0, 0.7); }
 }
 
-/* Стили для контейнера визитки */
+/* Стили для контейнера визитки (теперь это единственная карточка) */
 .card-container {
-    background: var(--web3-card-bg);
-    backdrop-filter: blur(15px) saturate(180%); /* Enhanced glassmorphism */
+    background: rgba(0, 0, 0, 0.5); /* Затемнил и сделал 50% прозрачной */
+    backdrop-filter: blur(15px) saturate(180%);
     -webkit-backdrop-filter: blur(15px) saturate(180%);
     padding: 40px;
     border-radius: 20px;
-    border: none; /* Removed border */
-    box-shadow: none; /* Removed initial box-shadow */
+    border: none;
+    box-shadow: none;
     max-width: 900px;
     width: 90%;
     box-sizing: border-box;
     animation: fadeIn 1s ease-out;
-    margin: 40px auto;
+    margin: 40px auto; /* Центрирование карточки с отступами */
     position: relative;
     z-index: 1;
     transition: all 0.3s ease;
 }
 
 .card-container:hover {
-    box-shadow: none; /* Removed box-shadow on hover */
-    transform: translateY(0); /* Removed transform on hover */
+    box-shadow: none;
+    transform: translateY(0);
 }
 
 @keyframes fadeIn {
@@ -95,18 +96,17 @@ body.dark-theme {
 
 /* Заголовки */
 h1 {
-    color: #FFFFFF; /* Changed to white */
+    color: #FFFFFF;
     text-align: center;
     margin-bottom: 10px;
     font-size: 3.2em;
     font-weight: 700;
-    /* Removed text-shadow */
     letter-spacing: 2px;
 }
 
 .tagline {
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.1em;
     color: var(--web3-text-medium);
     margin-bottom: 40px;
     font-weight: 400;
@@ -115,24 +115,23 @@ h1 {
 
 h2 {
     color: var(--web3-accent-blue);
-    border-bottom: 2px solid var(--web3-border-color);
+    border-bottom: 2px solid rgba(120, 120, 150, 0.4);
     padding-bottom: 12px;
     margin-top: 35px;
     margin-bottom: 25px;
     font-size: 2.2em;
     font-weight: 600;
-    /* Removed text-shadow */
 }
 
 /* Секция "Обо мне" */
 .about-me {
     text-align: center;
     margin-bottom: 40px;
-    background-color: rgba(0, 255, 192, 0.05); /* Very subtle transparent green */
+    background-color: rgba(0, 255, 192, 0);
     padding: 30px;
     border-radius: 15px;
-    border-left: 5px solid var(--web3-accent-green);
-    box-shadow: 0 0 10px rgba(0, 255, 192, 0.2);
+    border-left: none;
+    box-shadow: none;
 }
 
 #about-text {
@@ -149,39 +148,37 @@ h2 {
     justify-content: center;
     gap: 25px;
     margin-top: 50px;
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; /* Можно оставить или скорректировать */
 }
 
 .nav-button {
     display: flex;
     align-items: center;
     padding: 18px 35px;
-    background-color: var(--web3-accent-green); /* Neon Green button */
-    color: var(--web3-dark-bg); /* Dark text on bright button */
+    background-color: var(--web3-accent-green);
+    color: var(--web3-dark-bg);
     text-decoration: none;
     border-radius: 12px;
     font-size: 1.2em;
     font-weight: bold;
     transition: all 0.3s ease;
-    box-shadow: 0 0 15px var(--web3-accent-green), 0 0 5px var(--web3-accent-green); /* Initial glow */
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .nav-button:hover {
-    background-color: var(--web3-accent-blue); /* Change color on hover */
-    box-shadow: 0 0 25px var(--web3-accent-blue), 0 0 10px var(--web3-accent-blue); /* More intense glow */
+    background-color: var(--web3-accent-blue);
+    box-shadow: 0 0 25px var(--web3-accent-blue), 0 0 10px var(--web3-accent-blue);
     transform: translateY(-5px) scale(1.02);
     color: var(--web3-dark-bg);
 }
 
 .telegram-button {
-    background-color: var(--telegram-color); /* Telegram specific color */
-    box-shadow: 0 0 15px var(--telegram-color), 0 0 5px var(--telegram-color);
+    background-color: var(--telegram-color);
 }
 
 .telegram-button:hover {
-    background-color: #0288d1; /* Darker Telegram blue on hover */
+    background-color: #0288d1;
     box-shadow: 0 0 25px #0288d1, 0 0 10px #0288d1;
 }
 
@@ -189,22 +186,19 @@ h2 {
     width: 32px;
     height: 32px;
     margin-right: 15px;
-    filter: brightness(0) invert(1); /* Ensures white icon on colored background */
 }
 
 
 /* Футер */
 footer {
     text-align: center;
-    margin-top: 60px;
-    padding-top: 30px;
-    border-top: 1px dashed var(--web3-border-color); /* Dashed neon border */
+    margin-top: 60px; /* Увеличиваем отступ, так как нет линии */
+    padding-top: 0; /* Удаляем padding-top, так как нет линии */
+    border-top: none; /* Удаляем линию разделения */
     font-size: 0.9em;
     color: var(--web3-text-dark);
     opacity: 0.7;
 }
-
-/* Removed theme-switch-wrapper and related styles */
 
 /* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
@@ -220,7 +214,7 @@ footer {
     }
 
     .tagline {
-        font-size: 1.1em;
+        font-size: 1em;
         margin-bottom: 30px;
     }
 
@@ -233,7 +227,7 @@ footer {
     .navigation {
         flex-direction: column;
         gap: 15px;
-        margin-bottom: 40px;
+        /* margin-bottom: 40px; /* Можно скорректировать */
     }
 
     .nav-button {
@@ -242,6 +236,7 @@ footer {
         justify-content: center;
         padding: 15px 25px;
         font-size: 1.1em;
+        box-sizing: border-box;
     }
 
     .nav-button .icon {
