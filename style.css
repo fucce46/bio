@@ -1,5 +1,5 @@
 :root {
-    /* Web3 Colors */
+    /* Web3 Colors (сохранены для остальной стилизации) */
     --web3-dark-bg: #0A0B1A;
     --web3-card-bg: rgba(18, 20, 40, 0.7); /* Darker, slightly transparent */
     --web3-accent-green: #00FFC0; /* Neon Green (now only for accents) */
@@ -28,7 +28,15 @@ body {
     align-items: center;
     min-height: 100vh;
     transition: background-color 0.4s ease, color 0.4s ease;
-    background-image: url('bio.jpg');
+    /* Обновленные фоновые градиенты и изображение */
+    background-image: 
+        radial-gradient(ellipse at 50% 120%, rgba(100, 50, 200, 0.3) 0%, transparent 70%), /* Пурпурный градиент */
+        radial-gradient(ellipse at 80% 110%, rgba(50, 150, 250, 0.2) 0%, transparent 70%), /* Синий градиент */
+        radial-gradient(ellipse at 20% 105%, rgba(250, 50, 150, 0.2) 0%, transparent 70%),  /* Розовый градиент */
+        url('bio.jpg'); /* Ваше фоновое изображение */
+    background-repeat: no-repeat;
+    background-position: center bottom, center bottom, center bottom, center center; /* Позиционируем градиенты снизу */
+    background-size: 80% 50%, 70% 45%, 90% 55%, cover; /* Размеры градиентов */
     position: relative;
     background-color: var(--web3-dark-bg); /* Fallback for no image or dark base */
     overflow-x: hidden; /* Prevent horizontal scroll */
@@ -58,8 +66,8 @@ body::before {
     -webkit-backdrop-filter: blur(15px) saturate(180%);
     padding: 40px;
     border-radius: 20px;
-    border: 1px solid var(--web3-border-color); /* Neon border */
-    box-shadow: var(--web3-shadow-light); /* Subtle glow */
+    border: none; /* Removed border */
+    box-shadow: none; /* Removed initial box-shadow */
     max-width: 900px;
     width: 90%;
     box-sizing: border-box;
@@ -71,8 +79,8 @@ body::before {
 }
 
 .card-container:hover {
-    box-shadow: var(--web3-shadow-dark); /* More intense glow on hover */
-    transform: translateY(-5px);
+    box-shadow: none; /* Removed box-shadow on hover */
+    transform: translateY(0); /* Removed transform on hover */
 }
 
 @keyframes fadeIn {
