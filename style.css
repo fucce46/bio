@@ -31,16 +31,19 @@ body {
     transition: background-color 0.4s ease, color 0.4s ease;
     /* Обновленные фоновые градиенты и изображение */
     background-image:
-        radial-gradient(ellipse at 50% 150%, rgba(120, 70, 220, 0.7) 0%, transparent 60%), /* Яркий пурпурный, ниже, шире */
-        radial-gradient(ellipse at 80% 140%, rgba(70, 170, 255, 0.6) 0%, transparent 60%), /* Яркий синий, ниже, шире */
-        radial-gradient(ellipse at 20% 145%, rgba(255, 70, 170, 0.6) 0%, transparent 60%),  /* Яркий розовый, ниже, шире */
+        /* Добавляем очень тонкий шум для зернистости */
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 2px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 2px),
+        radial-gradient(ellipse at 50% 180%, rgba(180, 50, 255, 0.95) 0%, transparent 60%), /* Насыщенный пурпурный */
+        radial-gradient(ellipse at 80% 170%, rgba(50, 180, 255, 0.9) 0%, transparent 60%), /* Насыщенный синий */
+        radial-gradient(ellipse at 20% 175%, rgba(255, 50, 180, 0.9) 0%, transparent 60%),  /* Насыщенный розовый */
         url('bio.jpg');
-    background-repeat: no-repeat;
-    background-position: center bottom, center bottom, center bottom, center center; /* Позиционируем градиенты снизу */
-    background-size: 120% 70%, 110% 65%, 130% 75%, cover; /* Размеры градиентов увеличены */
+    background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position: 0 0, 0 0, center bottom, center bottom, center bottom, center center;
+    background-size: 100% 100%, 100% 100%, 150% 80%, 140% 75%, 160% 85%, cover;
     position: relative;
     background-color: var(--web3-dark-bg);
-    overflow-x: hidden; /* Предотвращаем горизонтальную прокрутку */
+    overflow-x: hidden;
 }
 
 body::before {
@@ -60,9 +63,9 @@ body::before {
     100% { background-color: rgba(0, 0, 0, 0.7); }
 }
 
-/* Стили для контейнера визитки (теперь это единственная карточка) */
+/* Стили для контейнера визитки */
 .card-container {
-    background: rgba(0, 0, 0, 0.5); /* Затемнил и сделал 50% прозрачной */
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(15px) saturate(180%);
     -webkit-backdrop-filter: blur(15px) saturate(180%);
     padding: 40px;
@@ -73,7 +76,7 @@ body::before {
     width: 90%;
     box-sizing: border-box;
     animation: fadeIn 1s ease-out;
-    margin: 40px auto; /* Центрирование карточки с отступами */
+    margin: 40px auto;
     position: relative;
     z-index: 1;
     transition: all 0.3s ease;
@@ -102,6 +105,7 @@ h1 {
     font-size: 3.2em;
     font-weight: 700;
     letter-spacing: 2px;
+    word-break: break-word;
 }
 
 .tagline {
@@ -148,7 +152,6 @@ h2 {
     justify-content: center;
     gap: 25px;
     margin-top: 50px;
-    /* margin-bottom: 60px; /* Можно оставить или скорректировать */
 }
 
 .nav-button {
@@ -164,6 +167,7 @@ h2 {
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
+    flex-shrink: 0;
 }
 
 .nav-button:hover {
@@ -192,9 +196,9 @@ h2 {
 /* Футер */
 footer {
     text-align: center;
-    margin-top: 60px; /* Увеличиваем отступ, так как нет линии */
-    padding-top: 0; /* Удаляем padding-top, так как нет линии */
-    border-top: none; /* Удаляем линию разделения */
+    margin-top: 60px;
+    padding-top: 0;
+    border-top: none;
     font-size: 0.9em;
     color: var(--web3-text-dark);
     opacity: 0.7;
@@ -203,53 +207,61 @@ footer {
 /* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
     .card-container {
-        padding: 25px;
+        padding: 20px;
         border-radius: 15px;
         width: 95%;
+        margin: 20px auto;
     }
 
     h1 {
-        font-size: 2.5em;
+        font-size: 2em;
         letter-spacing: 1px;
     }
 
     .tagline {
-        font-size: 1em;
-        margin-bottom: 30px;
+        font-size: 0.9em;
+        margin-bottom: 25px;
     }
 
     h2 {
-        font-size: 1.8em;
-        margin-top: 30px;
-        margin-bottom: 20px;
+        font-size: 1.6em;
+        margin-top: 25px;
+        margin-bottom: 15px;
     }
 
     .navigation {
         flex-direction: column;
         gap: 15px;
-        /* margin-bottom: 40px; /* Можно скорректировать */
+        margin-top: 30px;
     }
 
     .nav-button {
         width: 100%;
+        max-width: 300px;
+        align-self: center;
         text-align: center;
         justify-content: center;
-        padding: 15px 25px;
-        font-size: 1.1em;
+        padding: 12px 20px;
+        font-size: 1em;
         box-sizing: border-box;
     }
 
     .nav-button .icon {
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
         margin-right: 10px;
     }
 
     .about-me {
-        padding: 20px;
+        padding: 15px;
+        margin-bottom: 30px;
     }
 
     #about-text {
         font-size: 1.1em;
+    }
+
+    footer {
+        margin-top: 40px;
     }
 }
